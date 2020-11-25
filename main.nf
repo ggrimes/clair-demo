@@ -40,7 +40,7 @@ process download_illumina_model {
 // Create a folder for outputs
 process run_clair {
 cpus 2
-conda 'clair-env'
+conda 'environment.yml'
 
 input:
 path(testingData) from  testingData_ch
