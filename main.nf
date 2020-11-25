@@ -8,7 +8,7 @@ modelDataDown=Channel.from(params.modeldownload)
 process downtest {
 
   input:
-  var(testingDataDown) from testingDataDown
+  val(testingDataDown) from testingDataDown
 
   output:
   path("testingData") into testingData_ch
