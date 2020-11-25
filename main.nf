@@ -8,10 +8,10 @@ modelDataDown=Channel.from(params.modeldownload)
 process downtest {
 
   input:
-  val(testingDataDown) from testingDataDown
+    val(testingDataDown) from testingDataDown
 
   output:
-  path("testingData") into testingData_ch
+    file "testingData" into testingData_ch
 
   script:
   """
@@ -27,7 +27,7 @@ process download_illumina_model {
   val(modelDataDown)
 
   output:
-  path(12345)
+  path("*") into trainingData_ch
 
   script:
   """
@@ -44,7 +44,7 @@ conda 'environment.yml'
 
 input:
 path(testingData) from  testingData_ch
-path(traningData) from  trainingData_ch
+path(trainingData) from  trainingData_ch
 
 script:
 """
@@ -58,7 +58,7 @@ callVarBam \
 --call_fn ./training/chr21.vcf \
 --sampleName HG001 \
 --pysam_for_all_indel_bases \
---threads ${${task.cpus}} \
+--threads ${task.cpus} \
 --qual 100 \
 --ctgName chr21 \
 --ctgStart 10269870 \

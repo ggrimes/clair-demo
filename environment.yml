@@ -1,8 +1,8 @@
 name: clair-env
 channels:
-  - bioconda
   - conda-forge
-  - base
+  - bioconda
+  - defaults
 
 dependencies:
-  - clair
+  - clair=2.1.1
