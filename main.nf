@@ -24,7 +24,7 @@ process downtest {
 process download_illumina_model {
 
   input:
-  var(modelDataDown)
+  val(modelDataDown)
 
   output:
   path(12345)
